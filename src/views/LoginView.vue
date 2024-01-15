@@ -19,13 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/authStore';
+import { useAuthStore } from '@/store/authStore';
 import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
 const password = ref('');
 const email = ref('');
 const errorMessage = ref('');
+const router = useRouter();
 
 const isFormValid = ref(false);
 
@@ -33,10 +35,10 @@ const login = async () => {
   try {
     if (isFormValid.value) {
       await authStore.loginUser({ password: password.value, email: email.value });
-      window.location.reload();
+      router.push('/');
     }
   } catch (error: any) {
-    console.error('Error during login:', error);
+    console.error('Error mani login:', error);
     errorMessage.value = error.message || 'An unknown error occurred';
   }
 };

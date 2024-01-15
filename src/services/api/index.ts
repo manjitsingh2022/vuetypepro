@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import type { AxiosRequestConfig, AxiosResponse } from "axios";
 
-import { useAuthStore } from '@/stores/authStore';
+import { useAuthStore } from '@/store/authStore';
 
 const client = axios.create({
   baseURL: 'http://127.0.0.1:8000',
@@ -21,22 +21,31 @@ export function config(): AxiosRequestConfig {
   };
 }
 
+
 function handleResponse(response: AxiosResponse): any {
+  if (!response) {
+    console.log(response,'responseresponseresponseresponseresponse')
+    throw new Error('Invalid response. Please try again.');
+  }
+
   const { data } = response;
+  console.log(response, 'klsklsdklkldsdslklsk');
 
   if (response.status >= 200 && response.status < 300) {
     console.log('Response Data:', data);
     return data;
   } else {
     console.error('Error Response:', response);
-
     if (data && (data.message || data.detail)) {
       throw new Error(data.message || data.detail);
-    } else {
+    }  else if (response instanceof AxiosError && response.code === 'ERR_NETWORK') {
+      throw new Error(response.message || 'Network error occurred. Please check your internet connection.' );
+    }else {
       throw new Error(response.statusText);
     }
   }
 }
+
 
 export async function create(path: string, data: any, config: AxiosRequestConfig): Promise<any> {
   console.log('Request:', path, data, config);

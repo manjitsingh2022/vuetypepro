@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import UserList from '@/components/UserList.vue';
 import TheWelcome from '../components/TheWelcome.vue'
-import { useAuthStore } from '@/stores/authStore';
+import { useAuthStore } from '@/store/authStore';
 
 const authStore = useAuthStore();
 

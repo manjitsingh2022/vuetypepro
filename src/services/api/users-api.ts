@@ -24,6 +24,7 @@ export const usersApi = {
         return res;
     } catch (error:any) {
       console.error('Error during login:', error);
+      console.error('Error dfdfdfdfdf login:', error);
       throw new Error(error || 'Login failed');
     }
   },
