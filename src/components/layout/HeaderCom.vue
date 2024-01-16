@@ -1,103 +1,43 @@
 <script setup lang="ts">
-import { RouterLink, useRouter} from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import { useAuthStore } from '@/store/authStore';
-const route = useRouter()
+
+const route = useRouter();
 const authStore = useAuthStore();
-console.log(authStore,'authstore')
-const logout = async() => {
- await authStore.logout();
-  route.push('/login')
+
+const logout = async () => {
+  await authStore.logout();
+  route.push('/login');
 };
-
 </script>
+
 <template>
-    <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="120" height="120" />
-  
-      <div class="wrapper">
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-          <RouterLink to="/contact">Contact</RouterLink>
-          <button v-if="authStore.isAuthenticated" @click="logout">Logout</button>
-        </nav>
-      </div>
-    </header>
-  </template>
-  
-  
+  <header class="bg-gray-500 text-white p- flex items-center justify-between">
+    <!-- Corrected image path -->
+    <img alt="Vue logo" class="mr-4" src="@/assets/logo.svg" width="120" height="120" />
 
+    <nav class="flex">
+      <RouterLink to="/" class="px-4 border-l border-none border-gray-300">Home</RouterLink>
+      <RouterLink to="/about" class="px-4 border-l border-none border-gray-300">About</RouterLink>
+      <RouterLink to="/contact" class="px-4 border-l border-none border-gray-300">Contact</RouterLink>
+      <button v-if="authStore.isAuthenticated" @click="logout" class="px-4 border-l border-solid border-gray-300">Logout</button>
+    </nav>
+  </header>
+</template>
 
-  
-  <style scoped>
-  /* Add your styling here */
-  /* header {
-    background-color: #42b983;
-    color: #fff;
-    padding: 10px;
-  } */
-  header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style scoped>
+/* Add your custom styling here, if needed */
+/* Example: */
+header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.logo {
-  display: block;
-  padding-right: 5rem;
-}
-
 nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
   display: flex;
+  align-items: center;
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
+button {
   background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 1rem 0 0;
-  }
-
-  header .wrapper {
-    min-height: 3.25rem;
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-
-  </style>
-  
+</style>

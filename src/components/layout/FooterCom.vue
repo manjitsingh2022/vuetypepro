@@ -1,16 +1,5 @@
 <template>
-    <footer>
-      &copy; 2024 Your Website
-    </footer>
-  </template>
-  
-  <style scoped>
-  /* Add your styling here */
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-  </style>
-  
+  <footer class="bg-gray-800 text-white p-4 text-center">
+    &copy; 2024 Your Website
+  </footer>
+</template>

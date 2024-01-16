@@ -4,6 +4,7 @@ import router from './router'
 import { createApp } from 'vue';
 import { setupPinia,  } from './store';
 import { useAuthStore } from '@/store/authStore';
+import './assets/styles/tailwind.css';
 
 const app = createApp(App);
 app.use(router);

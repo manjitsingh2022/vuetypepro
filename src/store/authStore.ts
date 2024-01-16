@@ -88,7 +88,6 @@ export const useAuthStore = defineStore('user', {
           localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem('accessToken', token);
 
-          console.log('Login successful');
           this.$patch((state) => {
             console.log(state,'va;ieiieieiei')
             state.currentUser = user;

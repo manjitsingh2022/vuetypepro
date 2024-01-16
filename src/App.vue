@@ -9,7 +9,7 @@ console.log(authStore,'vlldkslsdlsd')
 </script>
 
 <template>
-  <div>
+  <div >
     <HeaderCom v-if="authStore.isAuthenticated" />
     <RouterView />
     <FooterCom v-if="authStore.isAuthenticated" />
@@ -17,7 +17,12 @@ console.log(authStore,'vlldkslsdlsd')
 </template>
 
 <style scoped>
+
+.temp{
+      padding: 0 7rem;
+}
 main {
   padding: 2rem;
+
 }
 </style>

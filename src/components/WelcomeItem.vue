@@ -1,10 +1,10 @@
 <template>
-  <div class="item">
-    <i>
+  <div class="item md:flex md:relative md:p-4 md:pl-[var(--section-gap)/2]">
+    <i class="md:absolute md:top-[50%] md:left-[-26px] md:transform md:-translate-y-1/2 md:border md:border-solid md:border-[1px] md:border-color-border md:bg-color-background md:rounded-md md:w-[50px] md:h-[50px]">
       <slot name="icon"></slot>
     </i>
-    <div class="details">
-      <h3>
+    <div class="details flex-1 md:ml-4">
+      <h3 class="text-lg font-semibold mb-1.5 md:text-[1.2rem] md:font-medium md:mb-4 text-color-heading">
         <slot name="heading"></slot>
       </h3>
       <slot></slot>
@@ -30,7 +30,6 @@ i {
   place-content: center;
   width: 32px;
   height: 32px;
-
   color: var(--color-text);
 }
 
