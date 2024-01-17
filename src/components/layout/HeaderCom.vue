@@ -17,9 +17,9 @@ const logout = async () => {
     <img alt="Vue logo" class="mr-4" src="@/assets/logo.svg" width="120" height="120" />
 
     <nav class="flex">
-      <RouterLink to="/" class="px-4 border-l border-none border-gray-300">Home</RouterLink>
-      <RouterLink to="/about" class="px-4 border-l border-none border-gray-300">About</RouterLink>
-      <RouterLink to="/contact" class="px-4 border-l border-none border-gray-300">Contact</RouterLink>
+      <RouterLink :to="{name:'home'}" class="px-4 border-l border-none border-gray-300">Home</RouterLink>
+      <RouterLink :to="{name:'about'}" class="px-4 border-l border-none border-gray-300">About</RouterLink>
+      <RouterLink :to="{name:'contact'}" class="px-4 border-l border-none border-gray-300">Contact</RouterLink>
       <button v-if="authStore.isAuthenticated" @click="logout" class="px-4 border-l border-solid border-gray-300">Logout</button>
     </nav>
   </header>
